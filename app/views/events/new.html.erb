@@ -1,6 +1,5 @@
-<%=form_with(model: @event, local: true) do |f| %>
+<%=form_with(model: [ @user, @user.events.build ], local: true) do |f| %>
   <%= f.label :description%>
   <%= f.text_area :description %><br>
-  
   <%= f.submit %>
 <% end %>
