@@ -5,8 +5,6 @@
   <%= @user.email %>
 </p>
 
- <%= link_to('Home', root_path) %>  |  <%= link_to('Create a new user', users_path)%>
  <p>
-   <%=@user.events%>
+   <%= pluralize(@user.events.count, 'event') %>
  </p>
-<%=link_to('Home', users_path) %>
