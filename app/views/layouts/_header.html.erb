@@ -11,3 +11,9 @@
     </li>
   </ul>
 </header>
+
+<% flash.each do |key, value| %>
+  <div>
+    <%=value%>        
+  </div>  
+<% end %>
