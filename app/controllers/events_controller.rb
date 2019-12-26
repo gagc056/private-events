@@ -4,7 +4,7 @@ class EventsController < ApplicationController
   end
 
   def create
-    @event= Event.new(event_params)
+    @event= current_user.events.build(event_params)
     if @event.save
       flash[:success]= "Event Created"
       redirect_to event_path(@event)
@@ -15,6 +15,7 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
+    redirect_to current_user
   end
 
   def index
@@ -23,6 +24,6 @@ class EventsController < ApplicationController
 
   private
   def event_params
-    params.require(:event).permit(:description)
+    params.require(:event).permit(:description, date)
   end
 end
