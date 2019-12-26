@@ -8,6 +8,7 @@ class SessionsController < ApplicationController
         sign_in user
         flash[:success] = "Welcome #{user.name}"
         redirect_to root_path
+        sign_in?
       else
         flash.now[:error]= 'Wrong sign in information'
         render 'new'
