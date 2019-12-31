@@ -8,6 +8,7 @@ class EventsController < ApplicationController
 
   def create
     user = User.find_by(id: current_user)
+    @event = user.events.build(user_id: current_user)
     @event = user.events.build(event_params)
     if @event.save
       flash[:success]= "Event Created"
@@ -28,6 +29,7 @@ class EventsController < ApplicationController
   end
 
   private
+
   def event_params
     params.require(:event).permit(:description, :date)
   end

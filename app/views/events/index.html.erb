@@ -1,7 +1,7 @@
 <ul>
 <% @events.each do |event| %>
   <li>
-    <%= event.description %>
+    <%= event.description %> <%=link_to(User.find_by(id: event.user_id).name, user_path(event.user_id)) if User.find_by(id: event.user_id) %>
   </li>
 <% end %>
 
