@@ -2,10 +2,6 @@ class User < ApplicationRecord
   has_many :events
   has_many :invitations
 
-  def previous_events
-    
-  end
-
-  def upcoming_events
-  end
+  scope: past, ->{ where(['date < ?', DateTime.now])}
+  scope:upcoming, ->{ where(['date >?', DateTime.now])}
 end

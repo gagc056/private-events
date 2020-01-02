@@ -1,5 +1,10 @@
 class InvitationController < ApplicationController
 
+    def new
+      @upcoming_events = current_user.attended_events.upcoming
+      @upcoming_events += current_user.created_events.upcoming
+    end
+
     def create
       @invitation= current_user.invitations.build(invitaion_params)
       if @invitation.save
@@ -15,7 +20,5 @@ class InvitationController < ApplicationController
         params[:invitation][:pending]=true
         params require(:invitation).permit(:)
       end
-
-
 
 end
