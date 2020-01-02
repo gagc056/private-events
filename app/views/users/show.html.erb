@@ -8,3 +8,8 @@
  <p>
    <%= pluralize(@user.events.count, 'event') %>
  </p>
+ <% @user.events.each do |e| %>
+ <p>
+   <%=e.description %>
+ </p>
+ <% end %>

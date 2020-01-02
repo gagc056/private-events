@@ -7,6 +7,10 @@ module SessionsHelper
 
   # sign_out if sign_in?
 
+  def current_user
+    cookies[:user_id]
+  end 
+
   def sign_out
     cookies.delete :user_id
   end
