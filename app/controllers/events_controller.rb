@@ -1,14 +1,11 @@
 class EventsController < ApplicationController
 
-<<<<<<< HEAD
-=======
 
   def new
     @user = current_user
     @event = Event.new
   end
 
->>>>>>> 7881d543214b8b9778620c21d16111e848ae3e11
   def create
     user = User.find_by(id: current_user)
     @event = user.events.build(user_id: current_user)
@@ -28,13 +25,7 @@ class EventsController < ApplicationController
   end
 
   def index
-<<<<<<< HEAD
-    @events = @user.events.all
-    @upcoming_events = Event.upcoming
-    @prev_events = Event.past
-=======
     @events = Event.all
->>>>>>> 7881d543214b8b9778620c21d16111e848ae3e11
   end
 
   private
