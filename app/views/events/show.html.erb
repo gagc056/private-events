@@ -1,3 +1,48 @@
-<p>
-  <%= @event.description %>
-</p>
+
+<section id="<%=@event.id%>">
+  <h1>
+    <%= @event.title %>
+  </h1>
+
+  <p>
+    <%= @event.description %>
+    By: <%= User.find_by(id: @event.user_id).name %>
+  </p>
+  
+  <p>
+    <strong>Date: </strong> <%= @event.date %>
+  </p>
+
+  <p>
+    <%=pluralize( @event.attendings.count, 'attendee') %>
+  </p>
+
+  <ul>
+    <% @event.attendings.count do |attendee|%>
+      <li>
+        <%= User.find_by(id: attendee.attendee_id).name%>
+
+      </li>
+    <% end %>
+  </ul>
+
+  <% if @event.attendees.find_by(id: current_user) %>
+    
+    <%= link_to('Disattend', attending_path(@event.attendees.find_by(id: current_user)), method: :delete) %>
+  <% else %>
+  <%= form_with(model: @attending, local: true, url: attendings_path) do |f| %>
+
+
+  <%= f.hidden_field :attendee_id, value: current_user %>
+
+  <%= f.hidden_field :attended_id, value: @event.id %>
+
+
+  <%= f.submit 'Attend' %>
+<% end %>
+
+  <% end %>
+
+  
+
+</section>

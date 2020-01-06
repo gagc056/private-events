@@ -5,9 +5,20 @@
   <ul>
 
     <% if sign_in?%>
+
+      <li>
+        <%= link_to('Events', events_path) %> | 
+      </li>
+
+      <li>
+        <%= link_to('Create an event',  new_event_path) %> | 
+      </li>
+
       <li>
         <%= link_to('Sign out', signout_path, :method => 'delete') %> | 
       </li>
+
+     
 
     <% else %>
       <li>

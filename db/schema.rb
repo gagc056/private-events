@@ -10,7 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_26_204509) do
+ActiveRecord::Schema.define(version: 2020_01_02_211015) do
+
+  create_table "atendings", force: :cascade do |t|
+    t.integer "attendee_id"
+    t.integer "attended_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "attendings", force: :cascade do |t|
+    t.integer "attendee_id"
+    t.integer "attended_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "creators", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
@@ -24,6 +38,7 @@ ActiveRecord::Schema.define(version: 2019_12_26_204509) do
     t.integer "creator_id"
     t.integer "user_id"
     t.date "date"
+    t.string "title"
   end
 
   create_table "invitations", force: :cascade do |t|

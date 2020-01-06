@@ -12,4 +12,12 @@
  <p>
    <%=e.description %>
  </p>
+
+ <% end %>
+
+ <% @user.attendings.each do |attend| %> 
+
+ <p>
+   <%=Event.find_by(id: attend.attended_id).description %>
+ </p>
  <% end %>

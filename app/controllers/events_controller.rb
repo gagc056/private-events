@@ -2,17 +2,18 @@ class EventsController < ApplicationController
 
 
   def new
-    @user = current_user
     @event = Event.new
   end
 
   def create
     user = User.find_by(id: current_user)
-    @event = user.events.build(user_id: current_user)
+ 
+
+
     @event = user.events.build(event_params)
     if @event.save
       flash[:success]= "Event Created"
-      redirect_to events_path
+      redirect_to event_path(@event)
     else
       flash.now[:error] = "You can't post an event #{@event.errors.messages}"
       render 'new'
@@ -20,8 +21,7 @@ class EventsController < ApplicationController
   end
 
   def show
-    @event = Event.includes(:creator, :attendees).find(params[:id])
-    redirect_to current_user
+    @event = Event.find(params[:id])
   end
 
   def index
@@ -31,7 +31,7 @@ class EventsController < ApplicationController
   private
 
   def event_params
-    params.require(:event).permit(:description, :date)
+    params.require(:event).permit(:title, :description, :date)
   end
 
  
