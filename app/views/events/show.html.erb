@@ -28,8 +28,10 @@
 
   <% if @event.attendees.find_by(id: current_user) %>
     
-    <%= link_to('Disattend', attending_path(@event.attendees.find_by(id: current_user)), method: :delete) %>
+    <%= link_to('Disattend', attending_path(@event.attendings.find_by(attendee_id: current_user)), method: :delete) %>
+ 
   <% else %>
+
   <%= form_with(model: @attending, local: true, url: attendings_path) do |f| %>
 
 

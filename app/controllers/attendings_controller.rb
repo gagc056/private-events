@@ -8,22 +8,20 @@ class AttendingsController < ApplicationController
 
         @event = Event.find_by(id: attendings_params[:attended_id])
         @attending = @event.attendees << User.find(current_user)
-        # redirect_to @attending
-
-        # if @attending.save
-        #     redirect_to events_path
-        # else
-        #     render 'new'
-        # end
+        redirect_to @event
     end
 
     def destroy
-        @event = Event.find_by(attended_info[0])
 
-        @attending = @event.attendings.find
+        @attending = Attending.find_by(id: params[:id])
 
         @attending.delete
+
+        redirect_to events_path
     end
+
+
+ 
 
 
     private
