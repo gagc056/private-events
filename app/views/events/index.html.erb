@@ -1,5 +1,15 @@
 <ul>
-<% @events.each do |event| %>
+<h1>Upcoming events</h1>
+<% @upcoming.each do |event| %>
+  <li>
+    <%= link_to(event.title, event_path(event)) %>
+    |
+    <%=link_to(User.find_by(id: event.user_id).name, user_path(event.user_id)) if User.find_by(id: event.user_id) %>
+  </li>
+<% end %>
+
+<h1>Past events</h1>
+<% @past.each do |event| %>
   <li>
     <%= link_to(event.title, event_path(event)) %>
     |

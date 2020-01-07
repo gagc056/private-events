@@ -1,7 +1,7 @@
+# frozen_string_literal: true
+
 module SessionsHelper
-
-
-  def sign_in user
+  def sign_in(user)
     cookies.permanent[:user_id] = user.id
   end
 
@@ -9,7 +9,7 @@ module SessionsHelper
 
   def current_user
     cookies[:user_id]
-  end 
+  end
 
   def sign_out
     cookies.delete :user_id
@@ -17,7 +17,7 @@ module SessionsHelper
 
   def sign_in?
     return true if cookies[:user_id]
-    
+
     false
   end
 end

@@ -1,18 +1,16 @@
+# frozen_string_literal: true
+
 class EventsController < ApplicationController
-
-
   def new
     @event = Event.new
   end
 
   def create
     user = User.find_by(id: current_user)
- 
-
 
     @event = user.events.build(event_params)
     if @event.save
-      flash[:success]= "Event Created"
+      flash[:success] = 'Event Created'
       redirect_to event_path(@event)
     else
       flash.now[:error] = "You can't post an event #{@event.errors.messages}"
@@ -25,7 +23,8 @@ class EventsController < ApplicationController
   end
 
   def index
-    @events = Event.all
+    @upcoming = Event.upcoming.all
+    @past = Event.past.all
   end
 
   private
@@ -33,6 +32,4 @@ class EventsController < ApplicationController
   def event_params
     params.require(:event).permit(:title, :description, :date)
   end
-
- 
 end
