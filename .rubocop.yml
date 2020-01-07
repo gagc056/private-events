@@ -28,7 +28,7 @@ Style/Documentation:
 Style/ClassAndModuleChildren:
   Enabled: false
 
-Layout/AlignmentHash:
+Layout/AlignHash:
   EnforcedColonStyle: key
 Layout/ExtraSpacing:
   AllowForAlignment: false
