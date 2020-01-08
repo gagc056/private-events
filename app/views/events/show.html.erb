@@ -31,9 +31,9 @@
 
 
 
-  <% if @event.attendees.find_by(id: current_user) %>
+  <% if find_by_attendee(current_user) %>
 
-  <%= link_to attending_path(@event.attendings.find_by(attendee_id: current_user)), method: :delete, class: 'w100', :action => 'go' do %>
+  <%= link_to attending_path(find_by_attending(current_user)), method: :delete, class: 'w100', :action => 'go' do %>
     <button class="ui bottom red attached button w100">
       <i class="calendar times outline icon"></i>
       Disattend
