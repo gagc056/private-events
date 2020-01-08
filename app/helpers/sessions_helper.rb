@@ -8,7 +8,7 @@ module SessionsHelper
   # sign_out if sign_in?
 
   def current_user
-    cookies[:user_id]
+    User.find_by(id: cookies[:user_id])
   end
 
   def sign_out
