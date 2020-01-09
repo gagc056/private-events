@@ -19,4 +19,20 @@ class SessionsController < ApplicationController
     sign_out if sign_in?
     redirect_to root_url
   end
+
+  private
+
+  def sign_in(user)
+    cookies.permanent[:user_id] = user.id
+  end
+
+  def sign_out
+    cookies.delete :user_id
+  end
+
+  def sign_in?
+    return true if cookies[:user_id]
+
+    false
+  end
 end
