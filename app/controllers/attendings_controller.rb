@@ -7,7 +7,7 @@ class AttendingsController < ApplicationController
 
   def create
     @event = Event.find_by(id: attendings_params[:attended_id])
-    @attending = @event.attendees << User.find(current_user)
+    @attending = @event.attendees << User.find(current_user.id)
     redirect_to @event
   end
 

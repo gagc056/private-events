@@ -13,6 +13,7 @@
 
     <div class="right menu">
 
+    <%= link_to("#{current_user.name}", user_path(current_user), class: 'item') %>
     <%= link_to('Sign out', signout_path, :method => 'delete', class: 'item') %>
 
   </div>

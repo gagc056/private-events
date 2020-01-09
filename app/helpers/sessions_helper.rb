@@ -5,8 +5,6 @@ module SessionsHelper
     cookies.permanent[:user_id] = user.id
   end
 
-  # sign_out if sign_in?
-
   def current_user
     User.find_by(id: cookies[:user_id])
   end
