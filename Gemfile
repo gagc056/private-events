@@ -51,7 +51,7 @@ group :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'rspec-rails', '~> 3.8'
   gem 'factory_bot_rails'
-   gem "factory_girl_rails", "~> 3.0"
+  gem "factory_girl_rails", "~> 3.0"
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
 end

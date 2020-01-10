@@ -1,15 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-
   subject { described_class.new }
 
   describe 'Validations' do
-
     it 'cannot be blanck' do
       expect(subject).to_not be_valid
     end
-
 
     it 'needs a password that matches with a password confirmation' do
       subject.password = '12345678'
@@ -22,10 +19,7 @@ RSpec.describe User, type: :model do
       subject.password_confirmation = '12345678'
       expect(subject).to be_valid
     end
-
-
   end
-
 
   describe 'Associations' do
     it 'has many events' do
