@@ -1,0 +1,14 @@
+<%=form_with(model: @event, local: true, url: events_path) do |f| %>
+
+  <%= f.label :title%>
+  <%= f.text_field :title %><br>
+
+
+  <%= f.label :description%>
+  <%= f.text_area :description %><br>
+
+  <%= f.label :date%>
+  <%= f.date_field :date %>
+
+  <%= f.submit %>
+<% end %>

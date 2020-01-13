@@ -1,0 +1,47 @@
+
+
+<header class="ui small menu">
+  
+  <%=link_to('PRIVATE EVENTS', root_path, class: 'item')%>
+
+
+  <% if sign_in?%>
+
+    <%= link_to('Events', events_path, class: 'item') %>
+
+    <%= link_to('Create an event',  new_event_path, class: 'item') %> 
+
+    <div class="right menu">
+
+    <%= link_to("#{current_user.name}", user_path(current_user), class: 'item') %>
+    <%= link_to('Sign out', signout_path, :method => 'delete', class: 'item') %>
+
+  </div>
+ 
+
+  <% else %>
+
+  <div class="right menu">
+    <%= link_to('Sign up', signup_path, class:"ui primary button item") %> 
+
+    <%= link_to('Log in', login_path, class:"ui primary button item") %> 
+  </div>
+    
+  <% end %>
+
+
+
+
+  
+</header>
+
+
+<% flash.each do |key, value| %>
+
+<div class="ui message">
+  <i class="close icon"></i>
+  <div class="header">
+    <%=value%> 
+  </div>
+</div>
+<% end %>

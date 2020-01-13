@@ -1,0 +1,62 @@
+<div class="ui cards">
+<div class="card" id="<%=@event.id%>">
+  <div class="content">
+    <div class="header"><%= @event.title %></div>
+    <div class="meta"><%= @event.date%></div>
+    <div class="description">
+      <%= @event.description %>
+    </div>
+
+    <h4>
+      Attendees: 
+    </h4>
+    <div class="ui list">
+      <% @event.attendees.each do |attende| %>
+      <div class="item">
+        <i class="user icon"></i>
+        <div class="content">
+          <%= attende.name %>
+        </div>
+      </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="extra content">
+    <a>
+      <i class="users icon"></i>
+      <%=pluralize( @event.attendings.count, 'attendee') %>
+    </a>
+  </div>
+
+
+
+
+  <% if find_by_attendee(current_user) %>
+
+  <%= link_to attending_path(find_by_attending(current_user)), method: :delete, class: 'w100', :action => 'go' do %>
+    <button class="ui bottom red attached button w100">
+      <i class="calendar times outline icon"></i>
+      Disattend
+    </button>
+    <% end %>
+
+  <% else %>
+
+  <%= form_with(model: @attending, local: true, url: attendings_path, class: 'w100') do |f| %>
+
+
+  <%= f.hidden_field :attendee_id, value: current_user %>
+
+  <%= f.hidden_field :attended_id, value: @event.id %>
+
+
+
+  <%= button_tag( :class => "ui bottom attached button w100") do %>
+   <i class="calendar times outline icon"></i> Attend 
+  <% end %>
+<% end %>
+
+  <% end %>
+</div>
+
+</div>

@@ -1,0 +1,38 @@
+
+<h2>
+  Upcoming Events
+</h2>
+<div class="ui list">
+  <% @upcoming.each do |event| %>
+
+    <div class="item">
+      <i class="calendar alternate icon"></i>
+      <div class="content">
+        <%= link_to(event.title, event_path(event), class: 'header') %>
+        <div class="description">
+          <%= event.description %>
+        </div>
+      </div>
+    </div>
+
+  <% end %>
+</div>
+
+<h2>
+  Past Events
+</h2>
+<div class="ui list">
+  <% @past.each do |event| %>
+
+    <div class="item">
+      <i class="calendar alternate outline icon"></i>
+      <div class="content">
+        <%= link_to(event.title, event_path(event), class: 'header') %>
+        <div class="description">
+          <%= event.description %>
+        </div>
+      </div>
+    </div>
+
+  <% end %>
+</div>

@@ -1,0 +1,88 @@
+<h1>
+  <%= @user.name %>
+</h1>
+
+<h2>
+  <%= pluralize(@user.events.count, 'Event') %> Created
+</h2>
+
+<div class="ui list">
+  <% @user.events.each do |event| %>
+
+    <div class="item">
+      <i class="calendar alternate icon"></i>
+      <div class="content">
+        <%= link_to(event.title, event_path(event), class: 'header') %>
+        <div class="description">
+          <%= event.description %>
+        </div>
+      </div>
+    </div>
+
+  <% end %>
+</div>
+
+
+
+<h2>
+  <%= pluralize(@user.attended.count, 'Event') %> Attended
+</h2>
+
+<div class="ui list">
+  <% @user.attended.each do |event| %>
+
+    <div class="item">
+      <i class="calendar alternate icon"></i>
+      <div class="content">
+        <%= link_to(event.title, event_path(event), class: 'header') %>
+        <div class="description">
+          <%= event.description %>
+        </div>
+      </div>
+    </div>
+
+  <% end %>
+</div>
+
+
+<h2>
+  Previously attended events
+</h2>
+
+<div class="ui list">
+  <% @user.attended.past.each do |event| %>
+
+    <div class="item">
+      <i class="calendar alternate icon"></i>
+      <div class="content">
+        <%= link_to(event.title, event_path(event), class: 'header') %>
+        <div class="description">
+          <%= event.description %>
+        </div>
+      </div>
+    </div>
+
+  <% end %>
+</div>
+
+<h2>
+  Upcoming attended events
+</h2>
+
+<div class="ui list">
+  <% @user.attended.upcoming.each do |event| %>
+
+    <div class="item">
+      <i class="calendar alternate icon"></i>
+      <div class="content">
+        <%= link_to(event.title, event_path(event), class: 'header') %>
+        <div class="description">
+          <%= event.description %>
+        </div>
+      </div>
+    </div>
+
+  <% end %>
+</div>
+
+
